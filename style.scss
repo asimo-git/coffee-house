@@ -1,0 +1,383 @@
+@import "css/common_things";
+@import "css/menu_page";
+
+//header
+%burger-line {
+  content: "";
+  position: absolute;
+  margin: 50% auto 0;
+  left: 0;
+  right: 0;
+  width: 16px;
+  height: 1px;
+  border-radius: 1px;
+  background-color: $container-color;
+}
+
+.top_panel {
+  @include flex-box();
+  margin-bottom: 20px;
+
+  .logo {
+    background-image: url("img/svg/logo.svg");
+    width: 100px;
+    height: 60px;
+    z-index: 11;
+  }
+
+  .main-menu {
+    @include flex-box(center);
+
+    a {
+      position: relative;
+      @include underline();
+    }
+
+    .coffee-menu-burger {
+      display: none;
+    }
+  }
+
+  .coffee-menu {
+    width: 72px;
+    height: 24px;
+    background: right no-repeat url("img/svg/coffee-cup.svg");
+    position: relative;
+
+    a {
+      @include underline();
+    }
+  }
+
+  .inactive::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $dark-text-color;
+  }
+
+  .burger-button {
+    display: none;
+    @include button(1px solid $container-color);
+    width: 42px;
+    height: 42px;
+    position: relative;
+    z-index: 11;
+    &::after {
+      @extend %burger-line;
+      top: 4px;
+      transition: 1s;
+    }
+
+    &::before {
+      @extend %burger-line;
+      top: -4px;
+      transition: 1s;
+    }
+  }
+
+  .burger-button.active-menu {
+    &::after {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    &::before {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+  }
+}
+
+.welcome-section {
+  position: relative;
+  @extend %rounded-container;
+
+  .enjoy-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 40px;
+  }
+
+  .welcome-text {
+    max-width: 530px;
+
+    .welcome-title {
+      font-size: 72px;
+      line-height: 105%;
+      margin: 0 0 40px;
+      letter-spacing: 1px;
+    }
+
+    .welcome-paragraph {
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
+
+    .button {
+      @include button(none);
+      font-weight: 600;
+      font-size: 16px;
+      color: $dark-text-color;
+      line-height: 150%;
+
+      &::after {
+        content: "";
+        opacity: 0;
+        transition: 1s;
+      }
+
+      &:hover:after {
+        content: url("img/svg/coffee-cup.svg");
+        vertical-align: middle;
+        opacity: 1;
+        margin-left: 8px;
+      }
+    }
+  }
+}
+//favorites
+.choose-favorite {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.coffee-slider {
+  @include flex-box();
+  margin-bottom: 40px;
+
+  .button {
+    @include button();
+    @include round-button();
+  }
+
+  .left {
+    margin-left: 4px;
+  }
+
+  .right {
+    margin-right: 4px;
+  }
+
+  .slider-window {
+    max-width: 480px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .slider-container {
+    display: flex;
+    transition: 1s;
+  }
+
+  .favorite-card {
+    width: 100%;
+    flex-shrink: 0;
+    text-align: center;
+    margin: auto;
+
+    .drink-img {
+      max-width: 480px;
+      max-height: 480px;
+      margin-bottom: 20px;
+
+      img {
+        object-fit: cover;
+      }
+    }
+
+    .drink-title,
+    .drink-text {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.controls-slider {
+  @include flex-box($gap: 12px);
+  width: 144px;
+  margin: 0 auto;
+
+  .control {
+    width: 40px;
+    height: 4px;
+    background-color: $border-light-color;
+    border-radius: 100px;
+  }
+
+  .progress-line {
+    width: 0;
+    height: 4px;
+    background-color: $container-color;
+    border-radius: 100px;
+  }
+}
+//about
+.fotos {
+  @include flex-box();
+  margin-top: 40px;
+
+  .column {
+    @include flex-box();
+    flex-direction: column;
+    width: 100%;
+
+    .container-foto {
+      width: 100%;
+      height: 590px;
+      overflow: hidden;
+      border-radius: 20px;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        transform: scale(1.1);
+        transition: 0.7s;
+
+        @media (hover: hover) {
+          &:hover {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+
+    .foto-1,
+    .foto-4 {
+      max-height: 590px;
+    }
+
+    .foto-2,
+    .foto-3 {
+      max-height: 430px;
+    }
+  }
+}
+//mobile-app
+.mobile-app {
+  @include flex-box($gap: 100px);
+
+  .app-description {
+    flex: 1;
+
+    .app-text {
+      margin: 40px 0 40px;
+    }
+
+    .button-container {
+      @include flex-box(left, 20px);
+      flex-wrap: wrap;
+
+      .button {
+        @include button();
+        width: 198px;
+        @include flex-box(center, 8px);
+        color: $dark-text-color;
+        transition: 0.7s;
+
+        svg path {
+          transition: 0.7s;
+        }
+
+        .button-text {
+          width: 116px;
+          height: 40px;
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 140%;
+          text-align: left;
+
+          span {
+            font-size: 16px;
+            line-height: 150%;
+          }
+        }
+
+        @media (hover: hover) {
+          &:hover {
+            background-color: $container-color;
+            color: $body-color;
+
+            svg path {
+              fill: $body-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mobile-screens {
+    max-width: 630px;
+    max-height: 630px;
+  }
+}
+//footer
+.footer {
+  @extend %rounded-container;
+  @include flex-box();
+  background-color: $container-color;
+
+  .footer-box {
+    width: 530px;
+
+    h2,
+    h3 {
+      margin-bottom: 40px;
+    }
+
+    .button {
+      @include button(1px solid $body-color);
+      margin-right: 8px;
+      width: 60px;
+      height: 60px;
+      background-color: transparent;
+      transition: 0.7s;
+
+      svg {
+        vertical-align: middle;
+        path {
+          transition: 0.7s;
+        }
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: $body-color;
+
+          svg path {
+            stroke: $dark-text-color;
+          }
+        }
+      }
+    }
+
+    .link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: $body-color;
+      position: relative;
+      @include underline($body-color);
+
+      svg {
+        vertical-align: top;
+        margin-right: 8px;
+      }
+    }
+
+    .opening-hours {
+      margin: 0;
+    }
+  }
+}
+
+@import "css/media_queries";
