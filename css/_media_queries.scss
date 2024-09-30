@@ -1,0 +1,157 @@
+@media screen and (max-width: 906px) {
+  .top_panel {
+    .main-menu {
+      gap: 20px;
+    }
+  }
+
+  .body-hidden {
+    overflow: hidden;
+  }
+
+  .fotos {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .column {
+      .container-foto {
+        max-width: 100%;
+        min-height: 590px;
+
+        img {
+          transform: scale(1.05);
+        }
+      }
+      .foto-2,
+      .foto-3 {
+        display: none;
+      }
+    }
+  }
+
+  .mobile-app {
+    flex-wrap: wrap;
+
+    .mobile-screens {
+      margin: 0 auto;
+    }
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    gap: 100px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top_panel {
+    .coffee-menu {
+      display: none;
+    }
+
+    .burger-button {
+      display: block;
+    }
+
+    .main-menu {
+      display: flex;
+      justify-content: start;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      flex-direction: column;
+      gap: 60px;
+      background-color: $body-color;
+      font-size: 32px;
+      line-height: 125%;
+      transition: 1s;
+      z-index: 10;
+
+      & > :first-child {
+        margin-top: 160px;
+      }
+
+      .coffee-menu-burger {
+        display: block;
+        margin-top: 40px;
+        width: 143px;
+        height: 32px;
+        background: right no-repeat url("img/svg/coffee-cup40px.svg");
+      }
+
+      .coffee-menu-burger.menu-page {
+        a {
+          cursor: auto;
+        }
+
+        a::before {
+          transform: scale(1);
+        }
+      }
+    }
+
+    .main-menu-open {
+      right: 0;
+    }
+  }
+
+  .container-menu {
+    margin-bottom: 40px;
+
+    .menu-card:nth-child(n + 5) {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .coffee-slider .button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .main-container {
+    padding: 20px 16px 40px;
+  }
+
+  .welcome-section .welcome-text .welcome-title {
+    font-size: 42px;
+    line-height: 115%;
+  }
+
+  .fotos .column .container-foto img {
+    transform: scale(1.24);
+  }
+
+  .mobile-app,
+  .footer {
+    gap: 40px;
+  }
+
+  .containers-checks {
+    gap: 8px;
+  }
+
+  .modal-window {
+    margin: 0 19px 0 19px;
+
+    .modal-img {
+      display: none;
+    }
+  }
+}
+
+@media (hover: none) {
+  .welcome-section .welcome-text .button {
+    &::after {
+      content: url("img/svg/coffee-cup.svg");
+      vertical-align: middle;
+      margin-left: 8px;
+      opacity: 1;
+    }
+  }
+}

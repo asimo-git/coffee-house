@@ -1,0 +1,213 @@
+.surprises {
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.containers-checks {
+  margin: 0 auto 40px;
+  @include flex-box(center, 16px);
+}
+
+.button-menu {
+  @include button(1px solid $border-light-color);
+  display: block;
+  height: 44px;
+  width: auto;
+  @include flex-box(center, 8px);
+  padding: 0 16px 0 8px;
+  transition: 0.7s;
+
+  &:hover {
+    background-color: #665f55;
+    color: #e1d4c9;
+  }
+
+  .emoji {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: $border-light-color;
+    text-align: center;
+    line-height: 185%;
+    color: $container-color;
+  }
+}
+
+.emoji-coffee {
+  background: center no-repeat url("img/svg/coffee-button.svg");
+}
+
+.emoji-tea {
+  background: center no-repeat url("img/svg/tea-button.svg");
+}
+
+.emoji-dessert {
+  background: center no-repeat url("img/svg/dessert-button.svg");
+}
+
+.active {
+  background-color: $container-color;
+  color: $body-color;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.container-menu {
+  @include flex-box(center);
+  flex-wrap: wrap;
+
+  .menu-card {
+    width: 307px;
+    height: 504px;
+    border-radius: 40px;
+    border: 1px solid $border-light-color;
+
+    @media (hover: hover) {
+      &:hover img {
+        width: 100%;
+      }
+    }
+
+    .menu-text {
+      padding: 20px;
+      position: relative;
+      height: 136px;
+
+      .drink-description {
+        margin: 12px 0 12px;
+      }
+
+      .drink-price {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.menu-img {
+  width: 307px;
+  height: 308px;
+  border-radius: 40px;
+  @include flex-box(center);
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 110%;
+    height: auto;
+    object-fit: contain;
+    transition: 0.7s;
+  }
+}
+
+.update-button {
+  @include button();
+  @include round-button();
+  margin: 0 auto 100px;
+  display: none;
+}
+/* -----------------modal window-------------------- */
+.blackout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+
+.modal-window {
+  z-index: 21;
+  max-width: 768px;
+  margin: 0 40px 0 40px;
+  padding: 16px;
+  display: flex;
+  gap: 20px;
+  background-color: $body-color;
+  border-radius: 40px;
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  .modal-img {
+    width: 100%;
+    height: 100%;
+    flex-basis: 304px;
+    flex-shrink: 1;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .modal-description {
+    flex-basis: 438px;
+  }
+
+  .drink-description {
+    margin: 12px 0 20px;
+  }
+
+  .containers-checks {
+    margin: 0 auto 20px;
+    justify-content: left;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .price-box {
+    @include flex-box($gap: 20px);
+    padding-bottom: 20px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $border-light-color;
+    }
+  }
+
+  .alert {
+    font-size: 10px;
+    line-height: 140%;
+    padding-left: 24px;
+    background: url("img/svg/info-empty.svg") no-repeat;
+    margin: 12px 0 32px 0;
+  }
+
+  .button {
+    @include button();
+    width: 100%;
+    height: 44px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    color: $dark-text-color;
+
+    &:hover {
+      background-color: $container-color;
+      color: $body-color;
+    }
+  }
+}
+
+.addition.active {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
